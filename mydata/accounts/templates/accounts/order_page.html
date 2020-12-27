@@ -1,0 +1,31 @@
+{%  extends 'accounts/main.html' %}
+{% load static %}
+{% block content %}
+<style>
+	.btn {
+		border: 2px solid;
+		border-radius: 0rem;
+	}
+</style>
+
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="card card-body">
+
+			<form action="" method="POST">
+				{% csrf_token %}
+				{{ formset.management_form }}
+				{% for form in formset %}
+				{{form}}
+				<hr>
+				{% endfor %}
+				<input type="submit" name="Submit" class="btn btn-outline-primary" value="UPDATE ORDER">
+			</form>
+
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

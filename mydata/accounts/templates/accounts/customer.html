@@ -1,0 +1,80 @@
+{%  extends 'accounts/main.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<link rel="stylesheet" type="text/css" href="{% static 'accounts/css/customer.css' %}">
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body mb-3 text-center">
+			<h4> Customer: <i>{{customer.name}} </i></h4>
+			<hr>
+			<a class="btn btn-outline-info btn-block" href="">Update Customer</a>
+			<a class="btn btn-outline-warning btn-block" href="{% url 'create_order' customer.id %}">Place Order</a>
+
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card text-center mb-3 card-body">
+			<h5>Contact Information</h5>
+			<hr>
+			<b>Email:<i> {{customer.email}} </i></b>
+			<b>Phone:<i> {{customer.phone}} </i></b>
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card text-center mb-3 card-body">
+			<h5>Total Orders</h5>
+			<hr>
+			<h1> {{total_orders}} </h1>
+		</div>
+	</div>
+</div>
+
+
+<br>
+<div class="row">
+	<div class="col-md">
+		<div class="card text-center mb-3 card-body">
+			<form method="GET">
+				{{myFilter.form}}
+				<button class="btn btn-outline-primary" type="submit">Search</button>
+			</form>
+		</div>
+	</div>
+
+</div>
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Product</th>
+					<th>Note</th>
+					<th>Date Ordered</th>
+					<th>Status</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+				{% for order in orders %}
+				<tr>
+					<th>{{order.product}}</th>
+					<td id="note">{{order.note}}</td>
+					<td id="date">{{order.date_created}}</td>
+					<th id="status">{{order.status}}</th>
+					<td><a class="btn btn-sm btn-outline-info" href="{% url 'update_order' order.id %}">UPDATE</a></td>
+					<td><a class="btn btn-sm btn-outline-danger" href="{% url 'delete_order' order.id %}">REMOVE</a>
+					</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

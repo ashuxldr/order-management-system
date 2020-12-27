@@ -1,0 +1,23 @@
+.navbar{
+    background-color: #0062cc;
+}
+.hello-msg b{
+font-family: 'Dancing Script', cursive;
+text-decoration: none;
+font-size:20px;
+color:black;
+margin-right:15px;
+}
+
+.hello-msg a{
+font-size:18px;
+color:#fff;
+margin-right:10px;
+}
+
+.hello-msg a:hover{
+font-family: 'Dancing Script', cursive;
+text-decoration: solid;
+font-size:20px;
+color:black;
+}

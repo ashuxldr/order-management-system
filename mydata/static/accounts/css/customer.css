@@ -1,0 +1,26 @@
+.btn{
+    border: 2px solid;
+    border-radius: 0rem;
+}
+.btn:hover{
+    border-radius: 30px;
+}
+#note{
+    color: green;
+}
+#status{
+    color: darkred;
+}
+#date{
+    color: black;
+}
+
+.row .col-md .card{
+    background-color: #ffffff;
+}
+
+.col-md .card b,h1{
+    text-align: center;
+    color:green;
+    padding: 10px;
+}

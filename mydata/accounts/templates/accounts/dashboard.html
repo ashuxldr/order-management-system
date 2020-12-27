@@ -1,0 +1,65 @@
+{%  extends 'accounts/main.html' %}
+{% load static %}
+
+
+{% block content %}
+
+{%  include 'accounts/status.html' %}
+
+<br>
+<link rel="stylesheet" type="text/css" href="{% static 'accounts/css/dashboard.css' %}">
+
+<div class="row">
+	<div class="col-md-4">
+		<h5>CUSTOMERS:</h5>
+		<hr>
+		<div class="card mb-4 card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>CUSTOMER</th>
+					<th>PHONE</th>
+				</tr>
+				{% for customer in customers%}
+				<tr>
+					<th><a href="{% url 'customer' customer.id %}">{{customer.name}}</a></th>
+					<td>{{customer.phone}}</td>
+				</tr>
+				{% endfor %}
+
+
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-8">
+		<h5>LAST 5 ORDERS:</h5>
+		<hr>
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>PRODUCT</th>
+					<th>ORDER BY</th>
+					<th>DATE ORDERED</th>
+					<th>STATUS</th>
+					<th>UPDATE</th>
+					<th>REMOVE</th>
+				</tr>
+				{% for order in orders %}
+				<tr>
+					<td id="product">{{order.product}}</td>
+					<td id="customer">{{order.customer.name}}</td>
+					<td id="date">{{order.date_created}}</td>
+					<th id="status">{{order.status}}</th>
+					<td><a class="btn btn-sm btn-outline-info" href="{% url 'update_order' order.id %}">UPDATE</a></td>
+					<td><a class="btn btn-sm btn-outline-danger" href="{% url 'delete_order' order.id %}">REMOVE</a>
+					</td>
+				</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}

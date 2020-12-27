@@ -1,0 +1,25 @@
+.btn{
+    border: 2px solid;
+    border-radius: 0rem;
+}
+.btn:hover{
+    border-radius: 30px;
+}
+
+.row .col-md-4 .card .table a{
+    text-decoration: none;
+    color:darkgreen;
+    font-style: oblique;
+}
+
+
+#customer{
+    color: black;
+}
+#status{
+    color: darkred;
+}
+#date{
+    color: black;
+}
+

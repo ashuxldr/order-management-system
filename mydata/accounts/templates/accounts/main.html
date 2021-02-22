@@ -11,10 +11,54 @@
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+	<style>
+
+body{
+background-color:white;}
+
+
+#footer {
+
+    padding: 40px 0px 20px 0px;
+
+           background-image: linear-gradient(
+130deg
+ , #2196f3 10%, #03a9f4 51%, #00bcd4 100%);
+
+.subscribe-box {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+}
+
+.subscribe-button {
+    background: #3caea3 !important;
+}
+
+.copyright-text {
+    font-size: 14px;
+    letter-spacing: 0.6px !important;
+}
+
+
+/* for scroll to top button */
+
+#button {
+    position: fixed;
+    right: 5%;
+    bottom: 5%;
+    z-index: 100;
+}
+
+footer a:hover{
+    color:black !important;
+}
+
+
+</style>
 </head>
 
 <body>
-	{%  include 'accounts/navbar.html' %}
+	{% include 'accounts/navbar.html' %}
 	<div class="container-fluid">
 		{% block content %}
 
@@ -23,7 +67,18 @@
 		{% endblock %}
 	</div>
 	<hr>
-	<h5>Our footer</h5>
+	<footer id="footer">
+
+        <div class="container">
+
+            <hr style="background: white;" class="mt-5">
+            <div class="text-center text-white p-5 m-lg-5 pt-lg-2 copyright-text">
+                2021 Copyright&copy; <span class="font-weight-bold">Park Street Pvt. Ltd.</span> ALL RIGHTS RESERVED
+            </div>
+
+        </div>
+    </footer>
+
 
 
 

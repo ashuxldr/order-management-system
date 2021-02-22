@@ -1,39 +1,46 @@
 {% load static %}
-
+{% url 'home' as home %}
+{% url 'products' as products %}
+{% url 'about' as about %}
+{% url 'account_settings' as account_settings %}
 
 <head>
   <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/navbar.css' %}">
-
 </head>
 
-<nav class="navbar navbar-expand-lg navbar-dark ">
-  <h3 style=" color:white; margin:5px; font-family: 'Dancing Script', cursive;
- ">Anshu Cafe</h3>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-    aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      {% if request.user.is_staff %}
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark ">
+    <h3 style=" color:white; margin:5px; font-family: 'Dancing Script', cursive;
+ ">Park Street</h3>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav" id="nav-act">
+        {% if request.user.is_staff %}
 
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'home' %}">Dashboard</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'products' %}">Products</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'about' %}">About</a>
-      </li>
-      {% else %}
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'account_settings' %}">Settings</a>
-      </li>
-      {% endif %}
-    </ul>
+        <li class="nav-item">
+          <a class="nav-link {% if request.path == home %} active {% endif %}" href="{% url 'home' %}">Dashboard</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link {% if request.path == products %} active {% endif %}"
+            href=" {% url 'products'%}">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.path == about %} active {% endif %}" href="{% url 'about' %}">About</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link {% if request.path == account_settings %} active {% endif %}"
+            href="{% url 'account_settings' %}">Settings</a>
+        </li>
+        {% endif %}
+      </ul>
 
-  </div>
-  <span class="hello-msg"><b>Hello, {{request.user}}</b></span>
-  <span class="hello-msg"><a href="{% url 'logout' %}">Logout</a></span>
-</nav>
+    </div>
+    <span class="hello-msg"><b>Hello, {{ request.user }}</b></span>
+    <span class="hello-msg"><a href="{% url 'logout' %}">Logout</a></span>
+  </nav>
+  <!-- <script type="text/javascript" src="{% static 'accounts/js/nav.js' %}"></script> -->
+</body>
